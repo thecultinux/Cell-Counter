@@ -1,30 +1,30 @@
 # Options de compilation
-CFLAGS=-g -Wall -Wextra -std=c99
+# (infos debug, tous warnings, standard C99, dossier include)
+CFLAGS=-g -Wall -Wextra -std=c99 -Iinclude
 
-# Options d'édition des liens
+# Options d'édition des liens (pour utiliser math.h)
 LDLIBS=-lm
 
-# Liste des exécutables à générer : un par fichier test .c
-BIN_FILES=$(patsubst test/%.c, bin/%, $(wildcard test/*.c))
+# Règle par défaut : générer tous les exécutables
+all: bin/test_hello_world bin/test_hello_world_repete
 
-# Règle pour générer tous les exécutables de la liste
-all: $(BIN_FILES)
+# Règle générique pour générer les fichiers objets pour les sources (.c -> .o)
+obj/%.o: src/%.c
+	gcc $(CFLAGS) -c $^ -o $@
 
-# Règle générique pour générer les exécutables de test
+# Règle générique pour générer les fichiers objets pour les tests (.c -> .o)
+obj/test_%.o: test/test_%.c
+	gcc $(CFLAGS) -c $^ -o $@
+
+# Règle générique pour générer les exécutables de test (.o -> executable)
 bin/test_%: obj/%.o obj/test_%.o
 	gcc $^ $(LDLIBS) -o $@
 
-# Règle générique pour générer les fichiers objets pour les tests
-obj/test_%.o: test/test_%.c
-	gcc $(CFLAGS) -g -Iinclude -c $^ -o $@
-
-# Règle générique pour générer les fichiers objets pour les sources
-obj/%.o: src/%.c
-	gcc $(CFLAGS) -g -Iinclude -c $^ -o $@
+# Règle spécifique pour générer l'exécutable test_hello_world
+bin/test_hello_world: obj/test_hello_world.o obj/hello_world_repete.o
+	gcc $^ $(LDLIBS) -o $@
 
 # Règle de nettoyage
 clean:
-	rm -rf bin
-	rm -rf obj
-	mkdir bin
-	mkdir obj
+	rm -rf bin obj
+	mkdir bin obj
