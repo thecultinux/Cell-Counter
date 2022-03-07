@@ -14,7 +14,13 @@ image readPgm( char *file ) {
   fscanf(f,"%d %d",&(fichier.width),&(fichier.height));
   fseek(f,sizeof(char),1);
   fscanf(f,"%d",&(fichier.depth));
+  fseek(f,sizeof(char),1);
 
+  fichier.data=calloc(fichier.width,sizeof(*(fichier.data)));
+  int i=0;
+  for ( i = 0; i < fichier.width; i++) {
+    fichier.data[i]=calloc(fichier.height, sizeof(char));
 
+  }
   return fichier;
 }
