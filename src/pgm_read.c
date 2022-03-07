@@ -3,15 +3,19 @@
 
 image readPgm( char *file ) {
   FILE* f;
-  image fichier = NULL;
-  f = fopen(file,"r");
+  image error;
+  image fichier;
+  f = fopen(file,"rb");
   if (f==NULL) {
-    return NULL;
+    printf("error: file not found");
+    return error;
   }
 
   fseek(f,2*sizeof(char),0);
-  int a;
-  fread(&a,sizeof(a),1,f);
-  printf("%d\n",a);
+  fscanf(f,"%d %d",&(fichier.width),&(fichier.height));
+  fseek(f,sizeof(char),1);
+  fscanf(f,"%d",&(fichier.depth));
+  
+
   return fichier;
 }
