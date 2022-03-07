@@ -5,8 +5,12 @@ CFLAGS=-g -Wall -Wextra -std=c99 -Iinclude
 # Options d'édition des liens (pour utiliser math.h)
 LDLIBS=-lm
 
+# List source files
+SRC=$(wildcard src/*.c)
+OBJ=$(subst src/, obj/, $(SRC:.c=.o))
+
 # Règle par défaut : générer tous les exécutables
-all: bin/test_hello_world bin/test_hello_world_repete
+all: $(OBJ) bin/test_hello_world bin/test_hello_world_repete bin/test_pgm_read
 
 # Règle générique pour générer les fichiers objets pour les sources (.c -> .o)
 obj/%.o: src/%.c
