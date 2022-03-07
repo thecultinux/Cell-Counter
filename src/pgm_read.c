@@ -7,7 +7,6 @@ image readPgm( char *file ) {
   image fichier;
   f = fopen(file,"rb");
   if (f==NULL) {
-    printf("error: file not found");
     return error;
   }
 
@@ -15,7 +14,7 @@ image readPgm( char *file ) {
   fscanf(f,"%d %d",&(fichier.width),&(fichier.height));
   fseek(f,sizeof(char),1);
   fscanf(f,"%d",&(fichier.depth));
-  
+
 
   return fichier;
 }
