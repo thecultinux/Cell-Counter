@@ -20,7 +20,7 @@ image readPgm( char *file ) {
   //fichier.data=calloc(fichier.width*fichier.height,sizeof(char));
 
   for ( i = 0; i < fichier.width*fichier.height; i++){
-    fscanf(f,"%d",&pixel);
+    fscanf(f,"%d ",&pixel);
     printf("%d ",pixel);
   }
   fclose(f);
