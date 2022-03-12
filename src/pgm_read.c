@@ -3,7 +3,7 @@
 
 image readPgm( char *file ) {
   FILE* f;
-  image error;
+  image error ={0,0,0,0};
   image fichier;
   f = fopen(file,"rb");
   if (f==NULL) {
@@ -18,9 +18,8 @@ image readPgm( char *file ) {
 
   fichier.data=calloc(fichier.width,sizeof(*(fichier.data)));
   int i=0;
-  for ( i = 0; i < fichier.width; i++) {
+  for ( i = 0; i < (int)fichier.width; i++) {
     fichier.data[i]=calloc(fichier.height, sizeof(char));
-
   }
   return fichier;
 }
