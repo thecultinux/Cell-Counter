@@ -7,14 +7,7 @@ int main(){
     printf("error: file not found \n");
     return 1 ;
   }
-  printf("la longueur:%d , la largeur:%d , la profondeur:%d \n",fichier.width, fichier.height , fichier.depth);
-  int i,j;
-  for (i = 0; i < (int)fichier.width; i++) {
-    for (j = 0; j < (int)fichier.height; j++) {
-      printf("%d",fichier.data[i][j]);
-    }
-    printf("\n");
-  }
+  printf("longueur:%d ||  largeur:%d ||  profondeur:%d \n",fichier.width, fichier.height , fichier.depth);
 
   return 0;
 }

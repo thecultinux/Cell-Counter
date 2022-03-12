@@ -1,8 +1,10 @@
 #include "pgm.h"
 
+int i;
+int pixel=0;
 
 image readPgm( char *file ) {
-  FILE* f;
+  FILE* f = NULL;
   image error ={0,0,0,0};
   image fichier;
   f = fopen(file,"rb");
@@ -10,16 +12,17 @@ image readPgm( char *file ) {
     return error;
   }
 
-  fseek(f,2*sizeof(char),0);
+  fseek(f,3*sizeof(char),SEEK_SET);
   fscanf(f,"%d %d",&(fichier.width),&(fichier.height));
-  fseek(f,sizeof(char),1);
+  fseek(f,sizeof(char),SEEK_CUR);
   fscanf(f,"%d",&(fichier.depth));
-  fseek(f,sizeof(char),1);
+  fseek(f,sizeof(char),SEEK_CUR);
+  //fichier.data=calloc(fichier.width*fichier.height,sizeof(char));
 
-  fichier.data=calloc(fichier.width,sizeof(*(fichier.data)));
-  int i=0;
-  for ( i = 0; i < (int)fichier.width; i++) {
-    fichier.data[i]=calloc(fichier.height, sizeof(char));
+  for ( i = 0; i < fichier.width*fichier.height; i++){
+    fscanf(f,"%d",&pixel);
+    printf("%d ",pixel);
   }
+  fclose(f);
   return fichier;
 }

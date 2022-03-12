@@ -3,9 +3,9 @@
 
 
 typedef struct image{
-  unsigned int width;
-  unsigned int height;
-  unsigned int depth;
+  int width;
+  int height;
+  int depth;
   unsigned char** data;
 } image;
 
