@@ -19,5 +19,6 @@ int main(){
   if (!writePgm(fichier)) {
     printf("Succesfully copied pgm file\n");
   }
+  freeImage(fichier);
   return 0;
 }

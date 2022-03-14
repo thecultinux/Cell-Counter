@@ -16,5 +16,6 @@ int main(){
     }
     printf("\n");
   }
+  freeImage(fichier);
   return 0;
 }

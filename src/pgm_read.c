@@ -1,7 +1,5 @@
 #include "pgm.h"
 
-
-
 image readPgm( char *file ) {
   int j;
   FILE* f = NULL;
@@ -26,4 +24,9 @@ image readPgm( char *file ) {
   fread(fichier.data[0],sizeof(char),fichier.height*fichier.width,f);
   fclose(f);
   return fichier;
+}
+
+void freeImage(image fichier){
+  free(*(fichier.data));
+  free(fichier.data);
 }

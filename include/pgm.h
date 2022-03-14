@@ -11,3 +11,4 @@ typedef struct image{
 
 image readPgm( char * );
 int writePgm( image );
+void freeImage( image );
