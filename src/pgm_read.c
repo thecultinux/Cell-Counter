@@ -1,9 +1,9 @@
 #include "pgm.h"
 
-int i,j;
-int pixel=0;
+
 
 image readPgm( char *file ) {
+  int j;
   FILE* f = NULL;
   image error ={0,0,0,0};
   image fichier;
@@ -23,7 +23,7 @@ image readPgm( char *file ) {
     fichier.data[j]=fichier.data[j-1]+fichier.width;
   }
 
-  fread(fichier.data[i],sizeof(char),fichier.height*fichier.width,f);
+  fread(fichier.data[0],sizeof(char),fichier.height*fichier.width,f);
   fclose(f);
   return fichier;
 }

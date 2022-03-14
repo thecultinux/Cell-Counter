@@ -10,3 +10,4 @@ typedef struct image{
 } image;
 
 image readPgm( char * );
+int writePgm( image );
