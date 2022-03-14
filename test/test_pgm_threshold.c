@@ -6,6 +6,7 @@ int main(int argc,char** argv) { //arg 1 nom image || arg2 seuil
     printf("Utilisation du programme : test_pgm_threshold <file.pgm> <threshold>\n");
     return -1;
   }
+  
   int threshold=atoi(argv[2]);
   image fichier = readPgm(argv[1]);
   manual_threshold(fichier,threshold);

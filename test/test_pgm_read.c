@@ -2,6 +2,7 @@
 
 int main(int argc, char** argv){
   int i,j;
+
   if (argc!=2) {
     printf("Utilisation : test_pgm_read <image.pgm>\n");
     return -1;
