@@ -3,9 +3,9 @@
 int i,j;
 int pixel=0;
 
-int writePgm( image fichier ) {
+int writePgm( image fichier, char* name) {
   FILE* f = NULL;
-  f = fopen("copy.pgm","wb");
+  f = fopen(name,"wb");
   if (f==NULL) {
     return -1;
   }

@@ -1,10 +1,12 @@
 #include "pgm.h"
 
-int main(){
+int main(int argc, char** argv){
   int i,j;
 
   image fichier;
-  fichier=readPgm("image.pgm");
+  fichier=readPgm(argv[1]);
+  char* name=argv[2];
+  printf("%s\n",name );
   if (fichier.width == 0) {
     printf("error: file not found \n");
     return 1 ;
@@ -16,8 +18,8 @@ int main(){
     }
     printf("\n");
   }
-  if (!writePgm(fichier)) {
-    printf("Succesfully copied pgm file\n");
+  if (!writePgm(fichier,name)) {
+    printf("Succesfully copied file to %s\n",name);
   }
   freeImage(fichier);
   return 0;

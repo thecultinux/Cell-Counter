@@ -10,5 +10,6 @@ typedef struct image{
 } image;
 
 image readPgm( char * );
-int writePgm( image );
+int writePgm( image , char*);
 void freeImage( image );
+int manual_threshold(image , int );
