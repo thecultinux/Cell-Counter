@@ -1,6 +1,6 @@
 #include "pgm.h"
 
-int i;
+int i,j;
 int pixel=0;
 
 image readPgm( char *file ) {
@@ -17,12 +17,13 @@ image readPgm( char *file ) {
   fseek(f,sizeof(char),SEEK_CUR);
   fscanf(f,"%d",&(fichier.depth));
   fseek(f,sizeof(char),SEEK_CUR);
-  //fichier.data=calloc(fichier.width*fichier.height,sizeof(char));
-
-  for ( i = 0; i < fichier.width*fichier.height; i++){
-    fscanf(f,"%d ",&pixel);
-    printf("%d ",pixel);
+  fichier.data=calloc(fichier.height,sizeof(char*));
+  *(fichier.data)=calloc(fichier.height*fichier.width,sizeof(char));
+  for( j=1; j<fichier.height ;j++){
+    fichier.data[j]=fichier.data[j-1]+fichier.width;
   }
+
+  fread(fichier.data[i],sizeof(char),fichier.height*fichier.width,f);
   fclose(f);
   return fichier;
 }
