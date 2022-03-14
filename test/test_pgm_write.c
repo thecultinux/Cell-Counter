@@ -2,7 +2,10 @@
 
 int main(int argc, char** argv){
   int i,j;
-
+  if(argc!=3){
+    printf("Utilisation : test_pgm_write <image.pgm> <nom de la copie.pgm>\n");
+    return -1;
+  }
   image fichier;
   fichier=readPgm(argv[1]);
   char* name=argv[2];
