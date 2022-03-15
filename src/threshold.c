@@ -13,8 +13,7 @@ int manual_threshold( image fichier,int threshold){
   return 0;
 }
 
-int histogram(image fichier; int histogram[]){
-  int histogram[256];
+int histogram(image fichier, int histogram[]){
   int i,j,k;
   for( i = 0; i<255; i++){
     j=0;
@@ -35,7 +34,7 @@ int auto_threshold(image fichier){
   int s=1;
   int i;
   int h[256];
-  h=histogram(fichier;h);
+  histogram(fichier,h);
   float average0, average1,w0,w1,simga2,old_sigma2=0;
   for(s=1; s<255; s++){
     for(i=0; i<s-1; i++){
@@ -52,6 +51,6 @@ int auto_threshold(image fichier){
       threshold=s;
     }
   }
-
+  manual_threshold(fichier,threshold);
   return 0;
 }
