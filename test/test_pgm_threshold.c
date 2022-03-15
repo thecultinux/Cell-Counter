@@ -15,6 +15,7 @@ int main(int argc,char** argv) { //arg 1 nom image || arg2 seuil
 //Test seuil auto
   image fichier2 = readPgm(argv[1]);
   auto_threshold(fichier2);
+  writePgm(fichier2,"auto_threshold.pgm");
   freeImage(fichier2);
   return 0;
 }
