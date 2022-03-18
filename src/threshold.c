@@ -23,7 +23,7 @@ int histogram(image fichier, int histogram[]){
         }
       }
     }
-    //printf("h[%d]=%d\n",i,histogram[i] ); affiche l'histogramme
+    //printf("h[%d]=%d\n",i,histogram[i] ); //affiche l'histogramme
   }
   return 0;
 }
@@ -35,21 +35,21 @@ int auto_threshold(image fichier){
   int h[256]={0};
   histogram(fichier,h);
   float average0,average1,w0,w1,sigma2,old_sigma2=0;
-  for(s=1; s<256; s++){
+  for(s=1; s<=255; s++){
     for(i=0; i<=s-1; i++){
       w0=w0+(float)h[i];
       average0=average0+((float)i*(float)h[i]/w0);
+      if(isnan(average0)) average0=0;
     }
 
     for(j=s; j<=255; j++){
       w1=w1+(float)h[j];
       average1=average1+((float)j*(float)h[j]/w1);
-      if (isnan(average1)) average1=0;
+      if(isnan(average1)) average1=0;
     }
 
     old_sigma2=sigma2;
     sigma2=w0*w1*(average0-average1)*(average0-average1);
-
     if(old_sigma2<sigma2){
       threshold=s;
     }
