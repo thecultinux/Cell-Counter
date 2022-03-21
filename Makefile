@@ -10,7 +10,7 @@ SRC=$(wildcard src/*.c)
 OBJ=$(subst src/, obj/, $(SRC:.c=.o))
 
 # Règle par défaut : générer tous les exécutables
-all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_pgm_threshold bin/test_morphology
+all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_pgm_threshold bin/test_bool
 
 # Règle générique pour générer les fichiers objets pour les sources (.c -> .o)
 obj/%.o: src/%.c
@@ -33,7 +33,7 @@ bin/test_pgm_threshold : obj/test_pgm_threshold.o obj/threshold.o obj/pgm_read.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour test_threshold
-bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o
+bin/test_bool : obj/test_bool.o obj/bool.o obj/pgm_read.o obj/pgm_write.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle de nettoyage
