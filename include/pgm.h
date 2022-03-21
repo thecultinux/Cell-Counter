@@ -22,5 +22,6 @@ int auto_threshold(image);
 int indexmaxi(float[], int);
 image allocate(image img);
 image intersection(image A , image B);
+image union_(image A , image B);
 
 #endif
