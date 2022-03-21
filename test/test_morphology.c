@@ -36,5 +36,18 @@ int main(int argc, char** argv){
     printf("successful union \n");
     return 0;
   }
-
+  if (!strcmp( argv[1], "xor" ) ||
+      !strcmp( argv[1], "XOR" ) ) {
+    printf("Mode XOR \n");
+    image A,B,result;
+    A=readPgm(argv[2]);
+    B=readPgm(argv[3]);
+    result=XOR(A , B);
+    writePgm(result, "xor.pgm");
+    freeImage(A);
+    freeImage(B);
+    freeImage(result);
+    printf("successful XOR \n");
+    return 0;
+  }
 }
