@@ -4,6 +4,8 @@
 #include <float.h>
 #include <math.h>
 
+#ifndef PGM_H
+#define PGM_H
 
 typedef struct image{
   int width;
@@ -18,3 +20,7 @@ void freeImage( image );
 int manual_threshold(image , int );
 int auto_threshold(image);
 int indexmaxi(float[], int);
+image allocate(image img);
+image intersection(image A , image B);
+
+#endif

@@ -10,7 +10,7 @@ SRC=$(wildcard src/*.c)
 OBJ=$(subst src/, obj/, $(SRC:.c=.o))
 
 # Règle par défaut : générer tous les exécutables
-all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_threshold
+all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_pgm_threshold bin/test_morphology
 
 # Règle générique pour générer les fichiers objets pour les sources (.c -> .o)
 obj/%.o: src/%.c
@@ -24,16 +24,16 @@ obj/test_%.o: test/test_%.c
 bin/test_%: obj/%.o obj/test_%.o
 	gcc $^ $(LDLIBS) -o $@
 
-	# Règle spécifique pour test_manual_threshold
-obj/test_threshold.o: test/test_pgm_threshold.c obj/pgm_read.o obj/pgm_write.o
-	gcc $(CFLAGS) -c $^ -o $@
-
 # Règle spécifique pour test_pgm_write
-bin/test_pgm_write : obj/pgm_read.o obj/pgm_write.o obj/test_pgm_write.o
+bin/test_pgm_write : obj/test_pgm_write.o obj/pgm_read.o obj/pgm_write.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour test_threshold
-bin/test_threshold : obj/threshold.o obj/test_threshold.o obj/pgm_read.o obj/pgm_write.o
+bin/test_pgm_threshold : obj/test_pgm_threshold.o obj/threshold.o obj/pgm_read.o obj/pgm_write.o
+	gcc $^ $(LDLIBS) -o $@
+
+# Règle spécifique pour test_threshold
+bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle de nettoyage
