@@ -1,4 +1,4 @@
-#include "pgm.h"
+#include "library.h"
 
 int main(int argc,char** argv) { //arg 1 nom image || arg2 seuil
 

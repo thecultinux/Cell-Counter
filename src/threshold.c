@@ -1,4 +1,4 @@
-#include "pgm.h"
+#include "library.h"
 
 int manual_threshold( image fichier,int threshold){
   int i,j;

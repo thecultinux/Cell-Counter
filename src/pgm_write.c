@@ -1,4 +1,4 @@
-#include "pgm.h"
+#include "library.h"
 
 int i,j;
 int pixel=0;

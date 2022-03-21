@@ -1,4 +1,4 @@
-#include "pgm.h"
+#include "library.h"
 
 image allocate(image fichier){
   int j;

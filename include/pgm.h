@@ -11,9 +11,6 @@ typedef struct image{
 image readPgm( char * );
 int writePgm( image , char*);
 void freeImage( image );
-int manual_threshold(image , int );
-int auto_threshold(image);
-int indexmaxi(float[], int);
 image allocate(image img);
 
 

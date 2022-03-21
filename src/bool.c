@@ -1,4 +1,4 @@
-#include "pgm.h"
+#include "library.h"
 
 image intersection(image A , image B){
   image inter;
@@ -45,7 +45,6 @@ image union_(image A , image B){
   }
   return union_;
 }
-
 image XOR(image A , image B){
   image XOR;
   int i,j;
