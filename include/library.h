@@ -7,3 +7,4 @@
 #include "pgm.h"
 #include "bool.h"
 #include "threshold.h"
+#include "morphology.h"
