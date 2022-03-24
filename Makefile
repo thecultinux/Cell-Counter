@@ -37,7 +37,7 @@ bin/test_bool : obj/test_bool.o obj/bool.o obj/pgm_read.o obj/pgm_write.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour test_morphology
-bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o
+bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle de nettoyage

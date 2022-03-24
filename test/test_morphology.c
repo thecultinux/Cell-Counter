@@ -33,7 +33,22 @@ if (!strcmp( argv[1], "ex" ) ||
       printf("Expansion done\n");
       return 0;
   }
-  else{
+
+
+if (!strcmp( argv[1], "re" ) ||
+    !strcmp( argv[1], "re" ) ) {
+      image fichier,seed,output;
+      fichier=readPgm(argv[2]);
+      seed=readPgm(argv[3]);
+      output=fichier;
+      output=allocate(output);
+      reconstruct(fichier,seed,output);
+      writePgm(output,"reconstructed.pgm");
+      freeImage(output);
+      printf("Reconstruction done\n");
+      return 0;
+    }
+else{
     printf("Nothing to be done\n");
   }
 }
