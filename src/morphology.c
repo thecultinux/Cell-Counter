@@ -12,7 +12,7 @@ int erode(image fichier, image output){
         && (fichier.data[i-1][j+1]==255)
         && (fichier.data[i+1][j-1]==255)
         && (fichier.data[i+1][j+1]==255)
-        &&(fichier.data[i][j]==255)){
+        && (fichier.data[i][j]==255)){
         output.data[i][j]=255;
       }
       else if((fichier.data[i][j-1]==0)
@@ -23,7 +23,7 @@ int erode(image fichier, image output){
       || (fichier.data[i-1][j+1]==0)
       || (fichier.data[i+1][j-1]==0)
       || (fichier.data[i+1][j+1]==0)
-      ||(fichier.data[i][j]==0)){
+      || (fichier.data[i][j]==0)){
         output.data[i][j]=0;
       }
     }
