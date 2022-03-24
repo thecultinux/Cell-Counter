@@ -39,3 +39,15 @@ void freeImage(image fichier){
   free(*(fichier.data));
   free(fichier.data);
 }
+
+int are_same_image(image a, image b){ //returns 1 if images are the same
+  if(!memcmp(a.data,b.data,a.width*a.height)){
+    return 1;
+  }
+  else return 0;
+}
+
+int image_copy(image source, image dest){
+  memcpy(dest.data,source.data,source.width*source.height);
+  return 0;
+}
