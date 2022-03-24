@@ -1,3 +1,10 @@
 bin/
 obj/
 *.pdf
+eroded.pgm
+expansed.pgm
+auto_threshold.pgm
+manual_threshold.pgm
+xor.pgm
+union.pgm
+intersection.pgm
