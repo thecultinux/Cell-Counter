@@ -1,25 +1,21 @@
-# Affichage répété de `Hello world`
+# Compteur de cellules à partir d'une photographie en format PGM binaire
 
-Auteur : Brice Colombier
+Auteur : Youwan Mahé et Aziz Yahmadi
 
-Ce programme affiche plusieurs fois "Hello world!".
+Ce programme effectue un traitement d'image afin de compter le nombres de cellules présentent sur la photographie
 
 ## Compilation
 
+Pour compiler le programme
 `make`
-
+Pour nettoyer le répertoire avant de compiler
+'make clean'
 ## Utilisation
 
-`./bin/test_hello_world NB_REPETITIONS`
+`./bin/counter INPUT_PGM`
 
-- `NB_REPETITIONS` : le nombre de répétitions.
+- `INPUT_PGM` : l'adresse du fichier pgm entrant.
 
 ## Tests
 
-    $ ./bin/test_hello_world 1
-    Hello world!
-
-    $ ./bin/test_hello_world 3
-    Hello world!
-    Hello world!
-    Hello world!
+COPIER ICI LES OUTPUTS DES TESTS
