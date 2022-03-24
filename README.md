@@ -9,7 +9,7 @@ Ce programme effectue un traitement d'image afin de compter le nombres de cellul
 Pour compiler le programme
 `make`
 Pour nettoyer le répertoire avant de compiler
-'make clean'
+`make clean`
 ## Utilisation
 
 `./bin/counter INPUT_PGM`
