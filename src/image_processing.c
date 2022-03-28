@@ -47,5 +47,16 @@ image hole_plugging(image fichier){
   seed=generate_frame_seed(fichier.width,fichier.height);
   reverse(fichier);
   result=reconstruct(fichier,seed);
+  reverse(result);
+  return result;
+}
+
+image manual_erosion(image fichier , int rep){
+  image result;
+  int i ;
+  for(i=0 ; i<rep ; i++) {
+    result=erode(fichier);
+    fichier=result;
+  }
   return result;
 }

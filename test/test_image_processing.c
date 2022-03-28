@@ -3,7 +3,7 @@
 int main(int argc, char** argv){
 
   if (argc<2) {
-    printf("utilisation : test_image_processing <mode> <image1.pgm> \n modes : \"b\" remove border cells || \"h\" remplissage des trous\n");
+    printf("utilisation : test_image_processing <mode> <image1.pgm> \n modes : \"b\" remove border cells || \"h\" remplissage des trous || \"mer\" erosion manuelle \n");
     return -1;
   }
 
@@ -29,7 +29,22 @@ int main(int argc, char** argv){
         return 0;
   }
 
+  if (!strcmp( argv[1], "mer" ) ||
+      !strcmp( argv[1], "MER" ) ) {
+        image fichier;
+        int rep;
+        fichier=readPgm(argv[2]);
+        printf("Donner le nombre d'érosions\n" );
+        scanf("%d\n", &rep );
+        fichier=manual_erosion(fichier,rep);
+        writePgm(fichier,"man_eroded.pgm");
+        freeImage(fichier);
+        printf("Manual erosion done\n");
+        return 0;
+  }
+
   else{
     printf("Nothing to be done\n");
+    return 0;
   }
 }
