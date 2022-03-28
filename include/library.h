@@ -8,3 +8,4 @@
 #include "bool.h"
 #include "threshold.h"
 #include "morphology.h"
+#include "image_processing.h"
