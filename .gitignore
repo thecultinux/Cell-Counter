@@ -8,3 +8,4 @@ manual_threshold.pgm
 xor.pgm
 union.pgm
 intersection.pgm
+border_cells_removed.pgm
