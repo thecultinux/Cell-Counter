@@ -1,7 +1,12 @@
 #include "library.h"
 
-int erode(image fichier, image output){
+image erode(image fichier){
   int i,j;
+  image output;
+  output.height=fichier.height;
+  output.width=fichier.width;
+  output.depth=fichier.depth;
+  output=allocate(output);
   for (i = 1; i < fichier.height-1; i++) { //on commence a 1 et on s'arrete a -1 car la bordure n'a pas de voisins
     for (j = 1; j < fichier.width-1; j++) {
       if(fichier.data[i][j-1]==255
@@ -28,11 +33,16 @@ int erode(image fichier, image output){
       }
     }
   }
-  return 0;
+  return output;
 }
 
-int expanse(image fichier, image output){
+image expanse(image fichier){
   int i,j;
+  image output;
+  output.height=fichier.height;
+  output.width=fichier.width;
+  output.depth=fichier.depth;
+  output=allocate(output);
   for (i = 1; i < fichier.height-1; i++) { //on commence a 1 et on s'arrete a -1 car la bordure n'a pas de voisins
     for (j = 1; j < fichier.width-1; j++) {
       if((fichier.data[i][j-1]==255)
@@ -59,7 +69,7 @@ int expanse(image fichier, image output){
       }
     }
   }
-  return 0;
+  return output;
 }
 
 int reconstruct(image fichier, image seed, image reconstructed){
@@ -73,7 +83,7 @@ int reconstruct(image fichier, image seed, image reconstructed){
   int i;
 
 
-  while(!are_same_image(output, old_output)){
+/*  while(!are_same_image(output, old_output)){
     expanse(seed,expansed_seed);
     image_copy(output,old_output);
     writePgm(old_output,"old.pgm");
@@ -87,5 +97,5 @@ int reconstruct(image fichier, image seed, image reconstructed){
   }
   image_copy(output,reconstructed);
  //FREE
-  return 0;
+  return 0;*/
 }

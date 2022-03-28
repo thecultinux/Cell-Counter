@@ -1,7 +1,7 @@
 #ifndef MORPHOLOGY_H
 #define MORPHOLOGY_H
 
-int erode(image input, image output);
-int expanse(image input, image output);
+image erode(image input);
+image expanse(image input);
 int reconstruct(image fichier, image seed, image reconstructed);
 #endif

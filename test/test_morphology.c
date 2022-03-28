@@ -9,27 +9,22 @@ int main(int argc, char** argv){
 
   if (!strcmp( argv[1], "er" ) ||
       !strcmp( argv[1], "ER" ) ) {
-    image fichier,output;
+    image fichier;
     fichier=readPgm(argv[2]);
-    output=fichier;
-    output=allocate(output);
-    erode(fichier,output);
-    writePgm(output,"eroded.pgm");
+    fichier=erode(fichier);
+    writePgm(fichier,"eroded.pgm");
     freeImage(fichier);
-    freeImage(output);
     printf("Erosion done\n");
     return 0;
   }
 
 if (!strcmp( argv[1], "ex" ) ||
     !strcmp( argv[1], "EX" ) ) {
-      image fichier,output;
+      image fichier;
       fichier=readPgm(argv[2]);
-      output=fichier;
-      output=allocate(output);
-      expanse(fichier,output);
-      writePgm(output,"expansed.pgm");
-      freeImage(output);
+      fichier=expanse(fichier);
+      writePgm(fichier,"expansed.pgm");
+      freeImage(fichier);
       printf("Expansion done\n");
       return 0;
   }
