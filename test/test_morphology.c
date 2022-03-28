@@ -32,14 +32,12 @@ if (!strcmp( argv[1], "ex" ) ||
 
 if (!strcmp( argv[1], "re" ) ||
     !strcmp( argv[1], "re" ) ) {
-      image fichier,seed,output;
+      image fichier,seed;
       fichier=readPgm(argv[2]);
       seed=readPgm(argv[3]);
-      output=fichier;
-      output=allocate(output);
-      reconstruct(fichier,seed,output);
-      writePgm(output,"reconstructed.pgm");
-      freeImage(output);
+      fichier=reconstruct(fichier,seed);
+      writePgm(fichier,"reconstructed.pgm");
+      freeImage(fichier);
       printf("Reconstruction done\n");
       return 0;
     }

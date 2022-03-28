@@ -72,30 +72,19 @@ image expanse(image fichier){
   return output;
 }
 
-int reconstruct(image fichier, image seed, image reconstructed){
+image reconstruct(image fichier, image seed){
   image old_output = fichier;
   image output = fichier;
-  image expansed_seed = seed;
   old_output=allocate(old_output);
   output=allocate(output);
-  expansed_seed=allocate(expansed_seed);
   image_copy(fichier,output);
-  int i;
 
-
-/*  while(!are_same_image(output, old_output)){
-    expanse(seed,expansed_seed);
+  while(!are_same_image(output, old_output)){
+    seed=expanse(seed);
     image_copy(output,old_output);
-    writePgm(old_output,"old.pgm");
-    output=intersection(output,expansed_seed);
-    writePgm(fichier,"input.pgm");
-    writePgm(seed,"seed.pgm");
-    writePgm(output,"output.pgm");
-    scanf("%d",&i );
-    printf("ARE THE SAME : %d\n",are_same_image(output,old_output));
+    output=intersection(fichier,seed);
 
   }
-  image_copy(output,reconstructed);
  //FREE
-  return 0;*/
+  return output;
 }
