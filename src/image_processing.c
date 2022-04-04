@@ -55,10 +55,18 @@ image reverse (image fichier){
 
 image hole_plugging(image fichier){
   image result,seed,reversed;
+  int i,j;
   seed=generate_frame_seed(fichier.width,fichier.height);
   reversed=reverse(fichier);
   result=reconstruct(reversed,seed);
   result=reverse(result);
+  for(i = 0; i<result.height; i++){
+    for(j = 0; j<result.width; j++){
+      if(i==0 || i==result.height-1 || j==0 || j==result.width-1){
+        result.data[i][j]=0;
+      }
+    }
+  }
   return result;
 }
 
