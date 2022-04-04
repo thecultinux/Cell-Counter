@@ -9,3 +9,4 @@
 #include "threshold.h"
 #include "morphology.h"
 #include "image_processing.h"
+#include "counter.h"
