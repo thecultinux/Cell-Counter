@@ -79,12 +79,12 @@ image reconstruct(image fichier, image seed){
   output=allocate(output);
   image_copy(fichier,output);
 
-  while(!are_same_image(output, old_output)){
+  do {
     seed=expanse(seed);
     image_copy(output,old_output);
     output=intersection(fichier,seed);
-
-  }
+    image_copy(output,seed);
+  }while(!are_same_image(output, old_output));
  //FREE
   return output;
 }
