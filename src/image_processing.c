@@ -73,6 +73,7 @@ image hole_plugging(image fichier){
 image manual_erosion(image fichier , int rep){
   image result;
   int i ;
+  
   for(i=0 ; i<rep ; i++) {
     result=erode(fichier);
     fichier=result;

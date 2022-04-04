@@ -32,10 +32,8 @@ int main(int argc, char** argv){
   if (!strcmp( argv[1], "mer" ) ||
       !strcmp( argv[1], "MER" ) ) {
         image fichier;
-        int rep;
+        int rep=atoi(argv[3]);
         fichier=readPgm(argv[2]);
-        printf("Donner le nombre d'érosions\n" );
-        scanf("%d\n", &rep );
         fichier=manual_erosion(fichier,rep);
         writePgm(fichier,"man_eroded.pgm");
         freeImage(fichier);
