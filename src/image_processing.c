@@ -2,14 +2,15 @@
 
 image generate_frame_seed(int width, int height){
   image frame;
-  int i,j;
+  int i=0;
+  int j=0;
   frame.width=width;
   frame.height=height;
   frame.depth=255;
   frame=allocate(frame);
-  for(i = 0; i<frame.width; i++){
-    for(j = 0; j<frame.height; j++){
-      if(i==0 || i==frame.width || j==0 || j==frame.height){
+  for(i = 0; i<frame.height; i++){
+    for(j = 0; j<frame.width; j++){
+      if(i==0 || i==frame.height-1 || j==0 || j==frame.width-1){
         frame.data[i][j]=255;
       }
       else frame.data[i][j]=0;

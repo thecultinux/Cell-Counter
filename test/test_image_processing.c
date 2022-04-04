@@ -3,7 +3,7 @@
 int main(int argc, char** argv){
 
   if (argc<2) {
-    printf("utilisation : test_image_processing <mode> <image1.pgm> \n modes : \"b\" remove border cells || \"h\" remplissage des trous || \"mer\" erosion manuelle \n");
+    printf("utilisation : test_image_processing <mode> <image1.pgm> \n modes : \"b\" remove border cells || \"h\" remplissage des trous || \"mer\" erosion manuelle || \"genseed\" generateur de seed\n");
     return -1;
   }
 
@@ -42,7 +42,16 @@ int main(int argc, char** argv){
         printf("Manual erosion done\n");
         return 0;
   }
-
+  if (!strcmp( argv[1], "genseed" ) ||
+      !strcmp( argv[1], "GENSEED" ) ) {
+        image fichier;
+        fichier=readPgm(argv[2]);
+        fichier=generate_frame_seed(fichier.width,fichier.height);
+        writePgm(fichier,"generated_seed.pgm");
+        freeImage(fichier);
+        printf("seed generated\n");
+        return 0;
+  }
   else{
     printf("Nothing to be done\n");
     return 0;

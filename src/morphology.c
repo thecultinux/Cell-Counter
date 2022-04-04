@@ -33,6 +33,7 @@ image erode(image fichier){
       }
     }
   }
+  freeImage(fichier);
   return output;
 }
 
@@ -69,6 +70,7 @@ image expanse(image fichier){
       }
     }
   }
+  freeImage(fichier);
   return output;
 }
 
@@ -85,6 +87,7 @@ image reconstruct(image fichier, image seed){
     output=intersection(fichier,seed);
     image_copy(output,seed);
   }while(!are_same_image(output, old_output));
- //FREE
+  freeImage(old_output);
+  freeImage(fichier);
   return output;
 }
