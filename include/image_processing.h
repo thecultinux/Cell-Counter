@@ -3,7 +3,7 @@
 
 image generate_frame_seed(int width, int height);
 image delete_edge_cell(image fichier);
-int reverse (image fichier);
+image reverse (image fichier);
 image hole_plugging(image fichier);
 image manual_erosion(image fichier , int rep);
 

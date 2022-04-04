@@ -37,24 +37,28 @@ image delete_edge_cell(image fichier){
 }
 
 
-int reverse (image fichier){
+image reverse (image fichier){
   int i,j;
+  image reversed=fichier;
+  reversed=allocate(reversed);
   for (i=0 ; i<fichier.height ; i++)
     for (j=0 ; j<fichier.width ; j++) {
-      if (fichier.data[i][j]==0) fichier.data[i][j]=255;
-      if (fichier.data[i][j]==255) fichier.data[i][j]=0;
+      if (fichier.data[i][j]==0) {
+        reversed.data[i][j]=255;
+      }
+      if (fichier.data[i][j]==255) {
+        reversed.data[i][j]=0;
+      }
     }
-  return 1;
+  return reversed;
 }
 
 image hole_plugging(image fichier){
-  image result,seed;
-  /*result = fichier;
-  result=allocate(result);*/
+  image result,seed,reversed;
   seed=generate_frame_seed(fichier.width,fichier.height);
-  reverse(fichier);
-  result=reconstruct(fichier,seed);
-  reverse(result);
+  reversed=reverse(fichier);
+  result=reconstruct(reversed,seed);
+  result=reverse(result);
   return result;
 }
 
