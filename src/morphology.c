@@ -87,7 +87,5 @@ image reconstruct(image fichier, image seed){
     output=intersection(fichier,seed);
     image_copy(output,seed);
   }while(!are_same_image(output, old_output));
-  freeImage(old_output);
-  freeImage(fichier);
   return output;
 }

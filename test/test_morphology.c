@@ -38,7 +38,6 @@ int main(int argc, char** argv){
         fichier=reconstruct(fichier,seed);
         writePgm(fichier,"reconstructed.pgm");
         freeImage(fichier);
-        freeImage(seed);
         printf("Reconstruction done\n");
         return 0;
   }
