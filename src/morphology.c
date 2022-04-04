@@ -17,18 +17,10 @@ image erode(image fichier){
         && (fichier.data[i-1][j+1]==255)
         && (fichier.data[i+1][j-1]==255)
         && (fichier.data[i+1][j+1]==255)
-        && (fichier.data[i][j]==255)){
+        ){
         output.data[i][j]=255;
       }
-      else if((fichier.data[i][j-1]==0)
-      || (fichier.data[i][j+1]==0)
-      || (fichier.data[i-1][j]==0)
-      || (fichier.data[i+1][j]==0)
-      || (fichier.data[i-1][j-1]==0)
-      || (fichier.data[i-1][j+1]==0)
-      || (fichier.data[i+1][j-1]==0)
-      || (fichier.data[i+1][j+1]==0)
-      || (fichier.data[i][j]==0)){
+      else{
         output.data[i][j]=0;
       }
     }
@@ -54,18 +46,10 @@ image expanse(image fichier){
       || (fichier.data[i-1][j+1]==255)
       || (fichier.data[i+1][j-1]==255)
       || (fichier.data[i+1][j+1]==255)
-      || (fichier.data[i][j]==255)){
+      ){
         output.data[i][j]=255;
       }
-      else if(fichier.data[i][j-1]==0
-        && (fichier.data[i][j+1]==0)
-        && (fichier.data[i-1][j]==0)
-        && (fichier.data[i+1][j]==0)
-        && (fichier.data[i-1][j-1]==0)
-        && (fichier.data[i-1][j+1]==0)
-        && (fichier.data[i+1][j-1]==0)
-        && (fichier.data[i+1][j+1]==0)
-        && (fichier.data[i][j]==0)){
+      else {
         output.data[i][j]=0;
       }
     }
@@ -79,13 +63,14 @@ image reconstruct(image fichier, image seed){
   image output = fichier;
   old_output=allocate(old_output);
   output=allocate(output);
-  image_copy(fichier,output);
 
   do {
-    seed=expanse(seed);
     image_copy(output,old_output);
+    seed=expanse(seed);
     output=intersection(fichier,seed);
     image_copy(output,seed);
   }while(!are_same_image(output, old_output));
+
+
   return output;
 }

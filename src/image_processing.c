@@ -20,13 +20,19 @@ image generate_frame_seed(int width, int height){
 }
 
 image delete_edge_cell(image fichier){
+  int i,j;
   image seed,result;
   image border_cells_only;
-  /*border_cells_only=fichier;
-  border_cells_only=allocate(border_cells_only);*/
   seed=generate_frame_seed(fichier.width,fichier.height);
   border_cells_only=reconstruct(fichier,seed);
   result=XOR(fichier,border_cells_only);
+  for(i = 0; i<result.height; i++){
+    for(j = 0; j<result.width; j++){
+      if(i==0 || i==result.height-1 || j==0 || j==result.width-1){
+        result.data[i][j]=0;
+      }
+    }
+  }
   return result;
 }
 

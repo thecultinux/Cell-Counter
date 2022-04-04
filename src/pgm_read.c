@@ -41,20 +41,10 @@ void freeImage(image fichier){
 }
 
 int are_same_image(image a, image b){ //returns 1 if images are the same
-  int i,j;
-  j=0;
-  for (i = 0; i < a.height; i++) {
-    if(!memcmp(a.data[i],b.data[i],a.width*sizeof(char))){
-      j++;
-    }
-    if (j+1==a.height) {
-      return 1;
-    }
-  }
-  return 0;
+  return memcmp(a.data[0],b.data[0],a.height*a.width*sizeof(char))==0;
 }
 
 int image_copy(image source, image dest){
-  memcpy(dest.data,source.data,source.width*source.height);
+  memcpy(dest.data[0],source.data[0],source.width*source.height);
   return 0;
 }
