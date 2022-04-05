@@ -7,6 +7,7 @@ int DFS(image fichier,int i, int j, int** visited){
     DFS(fichier,i+1,j,visited);
     DFS(fichier,i,j-1,visited);
     DFS(fichier,i,j+1,visited);
+    return 1;
   }
-  return 1;
+  return 0;
 }

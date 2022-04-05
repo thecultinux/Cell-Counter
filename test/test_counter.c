@@ -34,8 +34,8 @@ int main(int argc, char** argv){
         count=count+DFS(fichier,i,j,visited);
       }
     }
-    freeImage(fichier);
     printf("Counter result : %d cells \n",count);
+    freeImage(fichier);
     return 0;
   }
 }
