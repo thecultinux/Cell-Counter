@@ -28,7 +28,7 @@ image readPgm( char *file ) {
   fseek(f,sizeof(char),SEEK_CUR);
   fscanf(f,"%d",&(fichier.depth));
   fseek(f,sizeof(char),SEEK_CUR);
-  fichier= allocate(fichier);
+  fichier=allocate(fichier);
 
   fread(fichier.data[0],sizeof(char),fichier.height*fichier.width,f);
   fclose(f);
@@ -45,6 +45,18 @@ int are_same_image(image a, image b){ //returns 1 if images are the same
 }
 
 int image_copy(image source, image dest){
+  assert(source.width==dest.width &&source.height==dest.height);
+  int i,j;
+  for (i = 0; i < source.height; i++) {
+    for (j = 0; j < source.width; j++) {
+      dest.data[i][j]=source.data[i][j];
+    }
+  }
+  return 0;
+}
+/*
+int image_copy(image source, image dest){
   memcpy(dest.data[0],source.data[0],source.width*source.height);
   return 0;
 }
+*/

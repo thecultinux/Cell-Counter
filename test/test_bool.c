@@ -12,7 +12,9 @@ int main(int argc, char** argv){
     image A,B,result;
     A=readPgm(argv[2]);
     B=readPgm(argv[3]);
-    result=intersection(A , B);
+    result=A;
+    result=allocate(result);
+    result=intersection(A , B, result);
     writePgm(result, "intersection.pgm");
     freeImage(A);
     freeImage(B);
@@ -26,7 +28,9 @@ int main(int argc, char** argv){
     image A,B,result;
     A=readPgm(argv[2]);
     B=readPgm(argv[3]);
-    result=union_(A , B);
+    result=A;
+    result=allocate(result);
+    result=union_(A , B, result);
     writePgm(result, "union.pgm");
     freeImage(A);
     freeImage(B);
@@ -40,7 +44,9 @@ int main(int argc, char** argv){
     image A,B,result;
     A=readPgm(argv[2]);
     B=readPgm(argv[3]);
-    result=XOR(A , B);
+    result=A;
+    result=allocate(result);
+    result=XOR(A , B, result);
     writePgm(result, "xor.pgm");
     freeImage(A);
     freeImage(B);

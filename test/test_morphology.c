@@ -35,10 +35,13 @@ int main(int argc, char** argv){
         image fichier,seed;
         fichier=readPgm(argv[2]);
         seed=readPgm(argv[3]);
-        fichier=reconstruct(fichier,seed);
-        writePgm(fichier,"reconstructed.pgm");
-        freeImage(fichier);
+        image output={fichier.width,fichier.height,fichier.depth,0};
+        output=reconstruct(fichier,seed,output);
+        writePgm(output,"reconstructed.pgm");
         printf("Reconstruction done\n");
+        freeImage(fichier);
+        freeImage(output);
+        freeImage(seed);
         return 0;
   }
   else{

@@ -3,5 +3,5 @@
 
 image erode(image input);
 image expanse(image input);
-image reconstruct(image fichier, image seed);
+image reconstruct(image fichier, image seed, image output);
 #endif

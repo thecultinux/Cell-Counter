@@ -36,6 +36,8 @@ int main(int argc, char** argv){
     }
     printf("Counter result : %d cells \n",count);
     freeImage(fichier);
+    free(*(visited));
+    free(visited);
     return 0;
   }
 }

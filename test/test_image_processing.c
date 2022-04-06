@@ -11,20 +11,26 @@ int main(int argc, char** argv){
       !strcmp( argv[1], "B" ) ) {
         image fichier;
         fichier=readPgm(argv[2]);
-        fichier=delete_edge_cell(fichier);
-        writePgm(fichier,"border_cells_removed.pgm");
+        image output=fichier;
+        output=allocate(output);
+        output=delete_edge_cell(fichier,output);
+        writePgm(output,"border_cells_removed.pgm");
         freeImage(fichier);
+        freeImage(output);
         printf("Border cells removed\n");
         return 0;
   }
 
   if (!strcmp( argv[1], "h" ) ||
       !strcmp( argv[1], "H" ) ) {
-        image fichier;
+        image fichier,result;
         fichier=readPgm(argv[2]);
-        fichier=hole_plugging(fichier);
-        writePgm(fichier,"holes_plugged.pgm");
+        result=fichier;
+        result=allocate(result);
+        result=hole_plugging(fichier,result);
+        writePgm(result,"holes_plugged.pgm");
         freeImage(fichier);
+        freeImage(result);
         printf("Holes plugged\n");
         return 0;
   }
@@ -42,11 +48,14 @@ int main(int argc, char** argv){
   }
   if (!strcmp( argv[1], "genseed" ) ||
       !strcmp( argv[1], "GENSEED" ) ) {
-        image fichier;
+        image fichier,seed;
         fichier=readPgm(argv[2]);
-        fichier=generate_frame_seed(fichier.width,fichier.height);
+        seed=fichier;
+        seed=allocate(seed);
+        seed=generate_frame_seed(fichier.width,fichier.height,seed);
         writePgm(fichier,"generated_seed.pgm");
         freeImage(fichier);
+        freeImage(seed);
         printf("seed generated\n");
         return 0;
   }

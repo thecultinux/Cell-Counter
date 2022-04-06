@@ -58,19 +58,23 @@ image expanse(image fichier){
   return output;
 }
 
-image reconstruct(image fichier, image seed){
+image reconstruct(image fichier, image seed, image output){
   image old_output = fichier;
-  image output = fichier;
   old_output=allocate(old_output);
-  output=allocate(output);
-
+  image local_seed=seed;
+  local_seed=allocate(local_seed);
+  if(output.data==0){
+    output=allocate(output);
+  }
+  image_copy(seed,local_seed);
+  image_copy(fichier,old_output);
   do {
     image_copy(output,old_output);
-    seed=expanse(seed);
-    output=intersection(fichier,seed);
-    image_copy(output,seed);
+    local_seed=expanse(local_seed);
+    output=intersection(fichier,local_seed,output);
+    image_copy(output,local_seed);
   }while(!are_same_image(output, old_output));
-
-
+  freeImage(old_output);
+  freeImage(local_seed);
   return output;
 }

@@ -1,15 +1,11 @@
 #include "library.h"
 
-image intersection(image A , image B){
-  image inter;
+image intersection(image A , image B, image inter){
   int i,j;
   assert (A.height==B.height);
   assert (A.width==B.width);
   assert (A.depth==B.depth);
-  inter.height=A.height;
-  inter.width=A.width;
-  inter.depth=A.depth;
-  inter=allocate(inter);
+
   for (i=0; i<A.height; i++){
     for (j=0; j<A.width; j++){
 
@@ -23,16 +19,13 @@ image intersection(image A , image B){
   return inter ;
 }
 
-image union_(image A , image B){
-  image union_;
+image union_(image A , image B, image union_){
   int i,j;
   assert (A.height==B.height);
   assert (A.width==B.width);
   assert (A.depth==B.depth);
   union_.height=A.height;
-  union_.width=A.width;
-  union_.depth=A.depth;
-  union_=allocate(union_);
+
   for (i=0; i<A.height; i++){
     for (j=0; j<A.width; j++){
 
@@ -45,16 +38,11 @@ image union_(image A , image B){
   }
   return union_;
 }
-image XOR(image A , image B){
-  image XOR;
+image XOR(image A , image B, image XOR){
   int i,j;
   assert (A.height==B.height);
   assert (A.width==B.width);
   assert (A.depth==B.depth);
-  XOR.height=A.height;
-  XOR.width=A.width;
-  XOR.depth=A.depth;
-  XOR=allocate(XOR);
   for (i=0; i<A.height; i++){
     for (j=0; j<A.width; j++){
 
