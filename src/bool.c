@@ -45,12 +45,10 @@ image XOR(image A , image B, image XOR){
   assert (A.depth==B.depth);
   for (i=0; i<A.height; i++){
     for (j=0; j<A.width; j++){
-
        if(A.data[i][j]==0 && B.data[i][j]==0) XOR.data[i][j]=0;
        if(A.data[i][j]==255 && B.data[i][j]==0) XOR.data[i][j]=255;
        if(A.data[i][j]==0 && B.data[i][j]==255) XOR.data[i][j]=255;
        if(A.data[i][j]==255 && B.data[i][j]==255) XOR.data[i][j]=0;
-
     }
   }
   return XOR;

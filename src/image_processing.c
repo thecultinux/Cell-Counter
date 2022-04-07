@@ -78,13 +78,32 @@ image hole_plugging(image fichier, image result){
   return result;
 }
 
-image manual_erosion(image fichier , int rep){
-  image result;
+image manual_erosion(image fichier , int rep, image result){
   int i ;
 
   for(i=0 ; i<rep ; i++) {
-    result=erode(fichier);
-    fichier=result;
+    result=erode(fichier,result);
   }
   return result;
+}
+
+int isEmpty(image fichier){
+  int sum=0;
+  int i,j;
+  for (i = 0; i < fichier.height; i++) {
+    for (j= 0; j < fichier.width; j++) {
+      sum=sum+fichier.data[i][j];
+    }
+  }
+  if (sum==0) return 1; //retourne 1 si vide
+  else return 0; //retourne 0 sinon
+}
+
+void wipeImage(image fichier){
+  int i,j;
+  for (i = 0; i < fichier.height; i++) {
+    for (j= 0; j < fichier.width; j++) {
+      fichier.data[i][j]=0;
+    }
+  }
 }

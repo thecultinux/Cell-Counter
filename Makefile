@@ -37,14 +37,14 @@ bin/test_bool : obj/test_bool.o obj/bool.o obj/pgm_read.o obj/pgm_write.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour test_morphology
-bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o
+bin/test_morphology : obj/test_morphology.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o obj/image_processing.o
 	gcc $^ $(LDLIBS) -o $@
 
-# Règle spécifique pour test_morphology
+# Règle spécifique pour test_image_processing
 bin/test_image_processing : obj/test_image_processing.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o obj/image_processing.o
 	gcc $^ $(LDLIBS) -o $@
 
-# Règle spécifique pour test_morphology
+# Règle spécifique pour test_counter
 bin/test_counter : obj/test_counter.o obj/pgm_read.o obj/counter.o
 	gcc $^ $(LDLIBS) -o $@
 

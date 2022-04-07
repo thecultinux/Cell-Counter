@@ -37,12 +37,15 @@ int main(int argc, char** argv){
 
   if (!strcmp( argv[1], "mer" ) ||
       !strcmp( argv[1], "MER" ) ) {
-        image fichier;
+        image fichier,output;
         int rep=atoi(argv[3]);
         fichier=readPgm(argv[2]);
-        fichier=manual_erosion(fichier,rep);
-        writePgm(fichier,"man_eroded.pgm");
+        output=fichier;
+        output=allocate(output);
+        output=manual_erosion(fichier,rep,output);
+        writePgm(output,"man_eroded.pgm");
         freeImage(fichier);
+        freeImage(output);
         printf("Manual erosion done\n");
         return 0;
   }

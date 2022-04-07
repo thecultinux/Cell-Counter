@@ -9,22 +9,28 @@ int main(int argc, char** argv){
 
   if (!strcmp( argv[1], "er" ) ||
       !strcmp( argv[1], "ER" ) ) {
-        image fichier;
+        image fichier,output;
         fichier=readPgm(argv[2]);
-        fichier=erode(fichier);
+        output=fichier;
+        output=allocate(output);
+        output=erode(fichier,output);
         writePgm(fichier,"eroded.pgm");
         freeImage(fichier);
+        freeImage(output);
         printf("Erosion done\n");
         return 0;
   }
 
   if (!strcmp( argv[1], "ex" ) ||
       !strcmp( argv[1], "EX" ) ) {
-        image fichier;
+        image fichier,expansed;
         fichier=readPgm(argv[2]);
-        fichier=expanse(fichier);
+        expansed=fichier;
+        expansed=allocate(expansed);
+        expansed=expanse(fichier,expansed);
         writePgm(fichier,"expansed.pgm");
         freeImage(fichier);
+        freeImage(expansed);
         printf("Expansion done\n");
         return 0;
   }
@@ -42,6 +48,20 @@ int main(int argc, char** argv){
         freeImage(fichier);
         freeImage(output);
         freeImage(seed);
+        return 0;
+  }
+
+  if (!strcmp( argv[1], "uer" ) ||
+      !strcmp( argv[1], "UER" ) ) {
+        image fichier, eroded;
+        fichier=readPgm(argv[2]);
+        eroded=fichier;
+        eroded=allocate(eroded);
+        eroded=ultimate_erode(fichier, eroded);
+        writePgm(eroded,"utlimate_eroded.pgm");
+        freeImage(fichier);
+        freeImage(eroded);
+        printf("Ultimate Erosion done\n");
         return 0;
   }
   else{
