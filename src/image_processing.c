@@ -83,6 +83,7 @@ image manual_erosion(image fichier , int rep, image result){
 
   for(i=0 ; i<rep ; i++) {
     result=erode(fichier,result);
+    image_copy(result,fichier);
   }
   return result;
 }
