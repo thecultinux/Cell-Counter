@@ -12,7 +12,7 @@ Pour nettoyer le répertoire avant de compiler
 `make clean`
 ## Utilisation
 
-`./bin/counter INPUT_PGM`
+`./bin/main INPUT_PGM`
 
 - `INPUT_PGM` : l'adresse du fichier pgm entrant.
 

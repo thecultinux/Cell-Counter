@@ -10,7 +10,7 @@ SRC=$(wildcard src/*.c)
 OBJ=$(subst src/, obj/, $(SRC:.c=.o))
 
 # Règle par défaut : générer tous les exécutables
-all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_pgm_threshold bin/test_bool bin/test_morphology bin/test_image_processing bin/test_counter
+all: $(OBJ) bin/test_pgm_read bin/test_pgm_write bin/test_pgm_threshold bin/test_bool bin/test_morphology bin/test_image_processing bin/test_counter bin/main
 
 # Règle générique pour générer les fichiers objets pour les sources (.c -> .o)
 obj/%.o: src/%.c
@@ -46,6 +46,10 @@ bin/test_image_processing : obj/test_image_processing.o obj/morphology.o obj/pgm
 
 # Règle spécifique pour test_counter
 bin/test_counter : obj/test_counter.o obj/pgm_read.o obj/counter.o
+	gcc $^ $(LDLIBS) -o $@
+
+# Règle spécifique pour test_counter
+bin/main : obj/main.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o obj/image_processing.o obj/counter.o obj/threshold.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle de nettoyage
