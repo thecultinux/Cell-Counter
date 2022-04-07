@@ -88,12 +88,12 @@ image ultimate_erode(image input, image ultimate_erode){
     ultimate_erode=union_(residues,ultimate_erode,ultimate_erode);
     image_copy(eroded,current);
   }while(!isEmpty(current));
-  ultimate_erode=expanse(ultimate_erode,expansed);
+  expansed=expanse(ultimate_erode,expansed);
   image_copy(expansed,ultimate_erode);
   freeImage(reconstructed);
   freeImage(eroded);
   freeImage(current);
   freeImage(residues);
-  //freeImage(expansed); fait une erreur ?
+  freeImage(expansed);
   return ultimate_erode;
 }

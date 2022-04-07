@@ -58,7 +58,7 @@ int main(int argc, char** argv){
         eroded=fichier;
         eroded=allocate(eroded);
         eroded=ultimate_erode(fichier, eroded);
-        writePgm(eroded,"utlimate_eroded.pgm");
+        writePgm(eroded,"ultimate_eroded.pgm");
         freeImage(fichier);
         freeImage(eroded);
         printf("Ultimate Erosion done\n");
