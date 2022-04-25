@@ -118,7 +118,7 @@ image gen_number(int n, image number){
     case 7 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if ( j== number.width-1 || i==0 || j==0 || (j==number.width-1 &&  i<number.height && i>number.height/2) || (j==0 &&  i>0 && i<number.height/2))
+        if ( j== number.width-1 || i==0 || (j==number.width-1 &&  i<number.height && i>number.height/2) || (j==0 &&  i>0 && i<number.height/2))
           for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
             for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
               if (k>0 && k<number.height && l>0 && l<number.width ) {
