@@ -29,7 +29,13 @@ image gen_number(int n, image number){
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
         if ( j== number.width-1 )
-          number.data[i][j]=0;
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -37,12 +43,14 @@ image gen_number(int n, image number){
     case 2 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if ( i==0 || i==number.height-1 || i==number.height/2 )
-          number.data[i][j]=0;
-        if (j==number.width-1 &&  i>0 && i<number.height/2)
-          number.data[i][j]=0;
-        if (j==0&&  i<number.height && i>number.height/2)
-            number.data[i][j]=0;
+        if ( i==0 || i==number.height-1 || i==number.height/2 || (j==number.width-1 &&  i>0 && i<number.height/2) || (j==0&&  i<number.height && i>number.height/2))
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -51,7 +59,13 @@ image gen_number(int n, image number){
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
         if ( i==0 || i==number.height-1 || i==number.height/2 || j==number.width-1 )
-          number.data[i][j]=0;
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -59,10 +73,14 @@ image gen_number(int n, image number){
     case 4 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if (   i==number.height/2 || j==number.width-1)
-          number.data[i][j]=0;
-        if (j==0 &&  i>0 && i<number.height/2)
-            number.data[i][j]=0;
+        if (   i==number.height/2 || j==number.width-1 || (j==0 &&  i>0 && i<number.height/2))
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -70,12 +88,14 @@ image gen_number(int n, image number){
     case 5 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if ( i==0 || i==number.height-1 || i==number.height/2 )
-          number.data[i][j]=0;
-        if (j==0 &&  i>0 && i<number.height/2)
-          number.data[i][j]=0;
-        if (j==number.width-1 &&  i<number.height && i>number.height/2)
-            number.data[i][j]=0;
+        if ( i==0 || i==number.height-1 || i==number.height/2 || (j==0 &&  i>0 && i<number.height/2) || (j==number.width-1 &&  i<number.height && i>number.height/2))
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -83,12 +103,14 @@ image gen_number(int n, image number){
     case 6 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if ( i==0 || i==number.height-1 || i==number.height/2 )
-          number.data[i][j]=0;
-        if (j==0)
-          number.data[i][j]=0;
-        if (j==number.width-1 &&  i<number.height && i>number.height/2)
-            number.data[i][j]=0;
+        if ( i==0 || i==number.height-1 || i==number.height/2  || j==0 || (j==number.width-1 &&  i<number.height && i>number.height/2))
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -96,10 +118,14 @@ image gen_number(int n, image number){
     case 7 :
     for (i=0; i<number.height ; i++){
       for (j=0 ; j<number.width; j++){
-        if ( j== number.width-1 || i==0 )
-          number.data[i][j]=0;
-        if (j==0 &&  i>0 && i<number.height/2)
-          number.data[i][j]=0;
+        if ( j== number.width-1 || i==0 || j==0 || (j==number.width-1 &&  i<number.height && i>number.height/2) || (j==0 &&  i>0 && i<number.height/2))
+          for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+            for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+              if (k>0 && k<number.height && l>0 && l<number.width ) {
+                number.data[k][l]=0;
+              }
+            }
+          }
       }
     }
     break;
@@ -108,7 +134,13 @@ image gen_number(int n, image number){
       for (i=0; i<number.height ; i++){
         for (j=0 ; j<number.width; j++){
           if (i==0 || i==number.height-1 || j==0 || j== number.width-1 || i==number.height/2)
-            number.data[i][j]=0;
+            for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+              for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+                if (k>0 && k<number.height && l>0 && l<number.width ) {
+                  number.data[k][l]=0;
+                }
+              }
+            }
         }
       }
       break;
@@ -116,10 +148,14 @@ image gen_number(int n, image number){
       case 9 :
       for (i=0; i<number.height ; i++){
         for (j=0 ; j<number.width; j++){
-          if ( j== number.width-1 || i==0 || i==number.height-1 || i==number.height/2)
-            number.data[i][j]=0;
-          if (j==0 &&  i>0 && i<number.height/2)
-            number.data[i][j]=0;
+          if ( j== number.width-1 || i==0 || i==number.height-1 || i==number.height/2 || (j==0 &&  i>0 && i<number.height/2))
+            for (k=i-p*number.height/2; k<i+p*number.height/2 ; k++){
+              for (l=j-p*number.width/2 ; l<j+p*number.width/2; l++){
+                if (k>0 && k<number.height && l>0 && l<number.width ) {
+                  number.data[k][l]=0;
+                }
+              }
+            }
         }
       }
       break;
