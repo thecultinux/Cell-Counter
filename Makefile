@@ -49,7 +49,7 @@ bin/test_counter : obj/test_counter.o obj/pgm_read.o obj/counter.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour main
-bin/main : obj/main.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o obj/image_processing.o obj/counter.o obj/threshold.o
+bin/main : obj/main.o obj/morphology.o obj/pgm_read.o obj/pgm_write.o obj/bool.o obj/image_processing.o obj/counter.o obj/threshold.o obj/label.o
 	gcc $^ $(LDLIBS) -o $@
 
 # Règle spécifique pour test_label

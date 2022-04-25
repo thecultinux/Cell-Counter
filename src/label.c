@@ -161,5 +161,27 @@ image gen_number(int n, image number){
       break;
 
   }
+
   return number;
+}
+
+image label(int i,int j,int N,image fichier,image output){
+  int k,l;
+  image number;
+  number.height=0.005*fichier.height;
+  number.width=0.005*fichier.width;
+  number.depth=255;
+  number =allocate(number);
+  number=gen_number(N,number);
+  image_copy(fichier, output);
+  if (N<10){
+    for(k=i-number.height/2 ; k<i+number.height/2 ; k++){
+      for(l=j-number.width/2 ; l<j+number.width/2 ; l++){
+        printf("%d %d \n", k ,l);
+        output.data[k][l]=number.data[k][l];
+      }
+    }
+  }
+
+  return output;
 }

@@ -19,6 +19,8 @@ int main(int argc, char** argv) {
     output=ultimate_erode(fichier,output);
     image_copy(output,fichier);
     wipeImage(output);
+    freeImage(fichier);
+    fichier=readPgm(argv[1]);
 
     int i,j;
     int N=0;
@@ -38,11 +40,15 @@ int main(int argc, char** argv) {
       }
     }
     //on lance le DFS sur tout les pixels
+
     for (i = 0; i < fichier.height; i++) {
       for (j = 0; j < fichier.width; j++) {
         N=N+DFS(fichier,i,j,visited);
+        output=label(i, j, N, fichier, output);
+        image_copy(output, fichier);
       }
     }
+
     printf("Counter result : %d cells \n",N);
     freeImage(fichier);
     freeImage(output);
