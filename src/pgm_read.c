@@ -24,10 +24,8 @@ image readPgm( char *file ) {
   }
 
   fseek(f,3*sizeof(char),SEEK_SET);
-  fscanf(f,"%d %d",&(fichier.width),&(fichier.height));
-  fseek(f,sizeof(char),SEEK_CUR);
-  fscanf(f,"%d",&(fichier.depth));
-  fseek(f,sizeof(char),SEEK_CUR);
+  fscanf(f,"%d %d ",&(fichier.width),&(fichier.height));
+  fscanf(f,"%d ",&(fichier.depth));
   fichier=allocate(fichier);
 
   fread(fichier.data[0],sizeof(char),fichier.height*fichier.width,f);
