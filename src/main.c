@@ -19,11 +19,11 @@ int main(int argc, char** argv) {
     output=ultimate_erode(fichier,output);
     image_copy(output,fichier);
     wipeImage(output);
-    freeImage(fichier);
-    fichier=readPgm(argv[1]);
+    image source=readPgm(argv[1]);
 
     int i,j;
     int N=0;
+    int oldN=N;
 
     //creation d'une matrice pour savoir quels pixels ont été visité
     int** visited;
@@ -43,17 +43,24 @@ int main(int argc, char** argv) {
 
     for (i = 0; i < fichier.height; i++) {
       for (j = 0; j < fichier.width; j++) {
+        oldN=N;
         N=N+DFS(fichier,i,j,visited);
-        output=label(i, j, N, fichier, output);
-        image_copy(output, fichier);
+        printf("%d%% \r", 100*i/fichier.height);
+        if (oldN!=N) {
+          output=label(i, j, N, source, output);
+          image_copy(output, source);
+        }
       }
     }
 
-    printf("Counter result : %d cells \n",N);
+    writePgm(source,"counted.pgm");
+    printf("\n Counter result : %d cells \n",N);
     freeImage(fichier);
     freeImage(output);
+    freeImage(source);
     free(*(visited));
     free(visited);
+
   }
   return 0;
 }
