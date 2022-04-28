@@ -169,14 +169,15 @@ image label(int i,int j,int N,image fichier,image output){
   int k,l;
   int m=0;
   int n=m;
-  image number;
-  number.height=0.1*fichier.height;
-  number.width=0.05*fichier.width;
-  number.depth=255;
-  number=allocate(number);
-  number=gen_number(N,number);
-  image_copy(fichier, output);
+
   if (N<10){
+    image number;
+    number.height=0.1*fichier.height;
+    number.width=0.05*fichier.width;
+    number.depth=255;
+    number=allocate(number);
+    number=gen_number(N,number);
+    image_copy(fichier, output);
     for(k=i-number.height/2+1 ; k<i+number.height/2 ; k++){
       n=0;
       for(l=j-number.width/2+1 ; l<j+number.width/2 ; l++){
@@ -187,7 +188,41 @@ image label(int i,int j,int N,image fichier,image output){
       }
       m++;
     }
+    freeImage(number);
   }
+  if (N>=10 && N<100){
+    image number;
+    number.height=0.1*fichier.height;
+    number.width=0.05*fichier.width;
+    number.depth=255;
+    number=allocate(number);
+    number=gen_number(N/10,number); //puissance unités
+    image_copy(fichier, output);
+    for(k=i-number.height+1 ; k<i ; k++){
+      n=0;
+      for(l=j-number.width+1 ; l<j ; l++){
+        n++;
+        if (k>0 && k<output.height && l>0 && l<output.width && number.data[m][n]==0){
+          output.data[k][l]=number.data[m][n];
+        }
+      }
+      m++;
+    }
+
+  m=0;
+  number=gen_number(N%10,number); //puissance dizaine
+  for(k=i-number.height+1 ; k<i ; k++){
+    n=0;
+    for(l=j+1 ; l<j+number.width+1 ; l++){
+      n++;
+      if (k>0 && k<output.height && l>0 && l<output.width && number.data[m][n]==0){
+        output.data[k][l]=number.data[m][n];
+      }
+    }
+    m++;
+  }
+  freeImage(number);
+}
 
   return output;
 }
