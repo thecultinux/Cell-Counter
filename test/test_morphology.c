@@ -42,6 +42,7 @@ int main(int argc, char** argv){
         fichier=readPgm(argv[2]);
         seed=readPgm(argv[3]);
         image output={fichier.width,fichier.height,fichier.depth,0};
+        output=allocate(output);
         output=reconstruct(fichier,seed,output);
         writePgm(output,"reconstructed.pgm");
         printf("Reconstruction done\n");
