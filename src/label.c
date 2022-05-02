@@ -198,7 +198,7 @@ image label(int i,int j,int N,image fichier,image output){
     number=allocate(number);
     number=gen_number(N/10,number); //puissance unités
     image_copy(fichier, output);
-    for(k=i-number.height+1 ; k<i ; k++){
+    for(k=i-number.height/2+1 ; k<i+number.height/2 ; k++){
       n=0;
       for(l=j-number.width+1 ; l<j ; l++){
         n++;
@@ -211,7 +211,7 @@ image label(int i,int j,int N,image fichier,image output){
 
   m=0;
   number=gen_number(N%10,number); //puissance dizaine
-  for(k=i-number.height+1 ; k<i ; k++){
+  for(k=i-number.height/2+1 ; k<i+number.height/2 ; k++){
     n=0;
     for(l=j+1 ; l<j+number.width+1 ; l++){
       n++;
