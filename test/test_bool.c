@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv){
   if (argc<2) {
-    printf("utilisation : test_morphology <mode> <image1.pgm> <image2.pgm> \n modes : \"i\" intersection || \"u\" union || \"xor\" XOR\n");
+    printf("utilisation : test_bool <mode> <image1.pgm> <image2.pgm> \n modes : \"i\" intersection || \"u\" union || \"xor\" XOR\n");
     return -1;
   }
 
