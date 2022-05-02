@@ -104,3 +104,27 @@ Ce test fait des opérations de traitement d'image : la suppression des cellules
 
             $ ./bin/test_image_processing mer images/cells.pgm 5
             Manual erosion done
+
+##### 7. Test du comptage de cellules.
+Ce test permet de compter les cellules existantes dans une image pgm (déjà traitée par les fonction de traitement d'image).
+
+  `./bin/test_counter MODE INPUT`
+
+  - `INPUT` : l'adresse du fichier pgm d'entrée.
+  - `MODE` : "s": comptage simple
+
+            $ ./bin/test_counter s border_cells_removed.pgm
+            Mode Comptage simple
+            Counter result : 12 cells
+
+##### 8. Test de l'étiquettage.
+Ce test permet de générer des images "numéro" et de les coller sur une image source.
+
+  `./bin/test_label MODE N <INPUT>`
+
+  - `N` : c'est le numéro de l'étiquette.
+  - `MODE` : "gen_num": génère une image "numéro" à partir d'un numéro (entre 0 et 9) || "l": ajoute l'image "numéro" au centre de l'image input.
+  - `INPUT` :(uniquement pour le mode "l") l'adresse du fichier pgm d'entrée à numéroter.
+
+            $ ./bin/test_label l 85 images/cells.pgm
+            Label printed
