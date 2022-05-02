@@ -16,9 +16,9 @@ Pour nettoyer le répertoire avant de compiler
 
 - `INPUT_PGM` : l'adresse du fichier pgm entrant.
 
-    $ ./bin/main images/cells.pgm
-      99%
-      Counter result : 18 cells
+        $ ./bin/main images/cells.pgm
+        99%
+        Counter result : 18 cells
 ## Test
 1. Test de lecture des fichier PGM.
 Il affiche sur le terminal la matrice des pixels de l'image en représentation avec des entiers.
@@ -44,6 +44,7 @@ Il lit un fichier PGM puis créer une copie afin de tester l'écriture des fichi
 
   - `INPUT_PGM` : l'adresse du fichier pgm entrant.
   - `OUTPUT_PGM` : le nom du fichier pgm sortant.
+  
             $ ./bin/test_pgm_write images/morphotest1.pgm copie
             copie
             longueur:7 ||  largeur:7 ||  profondeur:255
