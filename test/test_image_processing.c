@@ -56,7 +56,7 @@ int main(int argc, char** argv){
         seed=fichier;
         seed=allocate(seed);
         seed=generate_frame_seed(fichier.width,fichier.height,seed);
-        writePgm(fichier,"generated_seed.pgm");
+        writePgm(seed,"generated_seed.pgm");
         freeImage(fichier);
         freeImage(seed);
         printf("seed generated\n");
