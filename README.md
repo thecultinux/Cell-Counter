@@ -1,15 +1,16 @@
 # Compteur de cellules à partir d'une photographie en format PGM binaire
 
-Auteur : Youwan Mahé et Aziz Yahmadi
+Auteurs : Youwan Mahé et Aziz Yahmadi
 
-Ce programme effectue un traitement d'image afin de compter le nombres de cellules présentent sur la photographie
+Ce programme effectue un traitement d'image afin de compter le nombre de cellules présentes sur la photographie
 
 ## Compilation
 
-Pour compiler le programme
-`make`
 Pour nettoyer le répertoire avant de compiler
 `make clean`
+Pour compiler le programme
+`make`
+
 ## Utilisation
 
 `./bin/main INPUT_PGM`
