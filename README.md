@@ -86,10 +86,21 @@ Ce test fait des opérations morphologiques sur une image : l'érosion , la dila
 
   `./bin/test_morphology MODE INPUT <SEED>`
 
-  - `INPUT` : l'adresse du fichier pgm.
+  - `INPUT` : l'adresse du fichier pgm d'entrée.
   - `SEED` : (Uniquement pour la reconstruction) c'est l'adresse du fichier pgm graine.
   - `MODE` : "er": erosion || "ex": dilatation || "re": reconstruction || "uer": érosion ultime.
 
             $ ./bin/test_morphology re images/reconstruct_test.pgm images/test_seed.pgm
             Reconstruction done
-            
+
+##### 6. Test des fonctions de traitement d'image.
+Ce test fait des opérations de traitement d'image : la suppression des cellules de bords , le bouchage des trous, la génération d'une image graine (pour les 2 fonctions précédentes) et l'érosion manuelle et produit une image contenant le résultat de l'opération.
+
+  `./bin/test_image_processing MODE INPUT <N>`
+
+  - `INPUT` : l'adresse du fichier pgm d'entrée.
+  - `N` : (Uniquement pour l'érosion manuelle) c'est le nombre de fois à éroder.
+  - `MODE` : "b": suppression des cellules de bords || "h": remplissage" de trous || "genseed": génération d'un cadre blanc (graine) || "mer": érosion manuelle .
+
+            $ ./bin/test_image_processing mer images/cells.pgm 5
+            Manual erosion done
