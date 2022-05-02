@@ -67,3 +67,18 @@ Ce test produit deux images en sortie. `manual_threshold.pgm` et `auto_threshold
 
             $./bin/test_pgm_threshold images/cells.pgm 120
             Calculated threshold = 155
+
+##### 4. Test des fonctions booléennes.
+Ce test fait des opérations booléennes sur 2 images de mêmes dimensions : l'intersection , l'union et le OU exclusif et produit une image contenant le résultat de l'opération.
+
+  `./bin/test_bool MODE INPUT1 INPUT2`
+
+  - `INPUT1` : l'adresse du 1er fichier pgm.
+  - `INPUT2` : l'adresse du 2eme fichier pgm.
+  - `MODE` : "i": intersection || "u": union || "xor": OU exclusif.
+
+            $ ./bin/test_bool i images/zones.pgm images/zones.pgm
+            Mode intersection
+            successful intersection
+
+##### 5. Test des fonctions morphologiques.
