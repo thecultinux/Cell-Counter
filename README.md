@@ -16,6 +16,8 @@ Pour nettoyer le répertoire avant de compiler
 
 - `INPUT_PGM` : l'adresse du fichier pgm entrant.
 
-## Tests
+## Exemple
 
-COPIER ICI LES OUTPUTS DES TESTS
+    $ ./bin/main images/cells.pgm
+    99%
+     Counter result : 18 cells
