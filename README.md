@@ -82,3 +82,14 @@ Ce test fait des opérations booléennes sur 2 images de mêmes dimensions : l'i
             successful intersection
 
 ##### 5. Test des fonctions morphologiques.
+Ce test fait des opérations morphologiques sur une image : l'érosion , la dilatation, la reconstruction et l'érosion ultime et produit une image contenant le résultat de l'opération.
+
+  `./bin/test_morphology MODE INPUT <SEED>`
+
+  - `INPUT` : l'adresse du fichier pgm.
+  - `SEED` : (Uniquement pour la reconstruction) c'est l'adresse du fichier pgm graine.
+  - `MODE` : "er": erosion || "ex": dilatation || "re": reconstruction || "uer": érosion ultime.
+
+            $ ./bin/test_morphology re images/reconstruct_test.pgm images/test_seed.pgm
+            Reconstruction done
+            
